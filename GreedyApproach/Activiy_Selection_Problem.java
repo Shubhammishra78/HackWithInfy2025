@@ -4,7 +4,7 @@ public class Activiy_Selection_Problem {
      Scanner sc = new Scanner(System.in);
      int n = sc.nextInt(); 
      int[][] arr = new int[n][2];
-     int count=0;
+     int count=1;
 
         
         for (int i = 0; i < n; i++) {
@@ -14,11 +14,12 @@ public class Activiy_Selection_Problem {
         }
         Arrays.sort(arr, Comparator.comparingInt(a -> a[1]));
 
-        for(int i=0;i<n-1;i++){
-            int crrEnd = arr[i][1];
-            int nextEnd = arr[i+1][0];
-            if(nextEnd >= crrEnd){
+            int LastEnd = arr[0][1];
+        for(int i=1;i<n;i++){  
+            int StartNew = arr[i][0];          
+            if(StartNew >= LastEnd){
                 count++;
+                LastEnd = arr[i][1];
             }
         }
         System.out.println(count);
